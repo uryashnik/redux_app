@@ -1,24 +1,24 @@
 import {createStore, bindActionCreators} from 'redux';
 import reduser from './reducer'
-import {inc, dec, rnd} from './actions';
+import * as actions from './actions';
 
 
 const store = createStore(reduser);
 const {dispatch} = store;
 
 
-const incDispatch = bindActionCreators(inc, dispatch);
-const decDispatch = bindActionCreators(dec, dispatch);
-const rndDispatch = bindActionCreators(rnd, dispatch);;
+const {inc,dec,rnd} = 
+bindActionCreators(actions, dispatch);
+
 
 document.getElementById('inc')
 .addEventListener('click', () => {
-    incDispatch();
+    inc();
 });
 
 document.getElementById('dec')
 .addEventListener('click', () => {
-    decDispatch();
+    dec();
 });
 
 const update = () => {
@@ -29,7 +29,7 @@ const update = () => {
 document.getElementById('rnd')
 .addEventListener('click', () => {
     const payload = Math.floor(Math.random() * 10);
-    rndDispatch(payload);
+    rnd(payload);
 });
 
 store.subscribe(update);
