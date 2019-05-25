@@ -5,3 +5,8 @@ const bindActionCreator = (creator, dispatch) => (...args) => {
 }
 
 bindActionCreator(rnd(12345), dispatch);
+
+const myFunc = () => {
+    alert();
+}
+
